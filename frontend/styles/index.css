@@ -1,9 +1,24 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
+  /* Extending Preflight */
+  /* If you’d like to add your own base styles on top of Preflight, simply add them to your CSS within a @layer base directive: */
+
+  /* h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  a {
+    @apply text-blue-600 underline;
+  } */
 }
+@tailwind components;
+@tailwind utilities;
 
 html {
   font-size: 13px;
