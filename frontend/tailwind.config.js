@@ -1,4 +1,4 @@
-const { colors } = require(`tailwindcss/defaultTheme`)
+const { colors } = require(`tailwindcss/defaultTheme`);
 
 module.exports = {
   mode: "jit", // see https://tailwindcss.com/docs/just-in-time-mode
@@ -17,6 +17,9 @@ module.exports = {
         },
       },
     },
+    fontFamily: {
+      sans: ["Montserrat", "sans-serif"],
+    },
     screens: {
       sm: "640px",
       md: "768px",
@@ -28,4 +31,4 @@ module.exports = {
     extend: {},
   },
   plugins: [require("@tailwindcss/typography")],
-}
+};
