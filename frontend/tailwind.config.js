@@ -1,5 +1,5 @@
 const { colors } = require(`tailwindcss/defaultTheme`);
-
+// console.log(colors.purple);
 module.exports = {
   mode: "jit", // see https://tailwindcss.com/docs/just-in-time-mode
   purge: ["./components/**/*.js", "./pages/**/*.js"],
@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.purple,
+        primary: "#532565",
         purple: {
           light: "#c0b3c5",
           DEFAULT: "#532565",

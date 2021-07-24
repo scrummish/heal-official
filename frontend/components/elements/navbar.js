@@ -1,20 +1,24 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import Link from "next/link"
-import { useRouter } from "next/router"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import { getButtonAppearance } from "utils/button"
-import { mediaPropTypes, linkPropTypes, buttonLinkPropTypes } from "utils/types"
-import { MdMenu } from "react-icons/md"
-import MobileNavMenu from "./mobile-nav-menu"
-import ButtonLink from "./button-link"
-import NextImage from "./image"
-import CustomLink from "./custom-link"
-import LocaleSwitch from "../locale-switch"
+import { getButtonAppearance } from "utils/button";
+import {
+  mediaPropTypes,
+  linkPropTypes,
+  buttonLinkPropTypes,
+} from "utils/types";
+import { MdMenu } from "react-icons/md";
+import MobileNavMenu from "./mobile-nav-menu";
+import ButtonLink from "./button-link";
+import NextImage from "./image";
+import CustomLink from "./custom-link";
+import LocaleSwitch from "../locale-switch";
 
 const Navbar = ({ navbar, pageContext }) => {
-  const router = useRouter()
-  const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false)
+  const router = useRouter();
+  const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false);
 
   return (
     <>
@@ -33,7 +37,7 @@ const Navbar = ({ navbar, pageContext }) => {
               {navbar.links.map((navLink) => (
                 <li key={navLink.id}>
                   <CustomLink link={navLink} locale={router.locale}>
-                    <div className="hover:text-gray-900 px-2 py-1">
+                    <div className="hover:text-magenta text-purple px-2 py-1">
                       {navLink.text}
                     </div>
                   </CustomLink>
@@ -83,8 +87,8 @@ const Navbar = ({ navbar, pageContext }) => {
         />
       )}
     </>
-  )
-}
+  );
+};
 
 Navbar.propTypes = {
   navbar: PropTypes.shape({
@@ -96,6 +100,6 @@ Navbar.propTypes = {
     button: buttonLinkPropTypes,
   }),
   initialLocale: PropTypes.string,
-}
+};
 
-export default Navbar
+export default Navbar;

@@ -1,7 +1,7 @@
-import classNames from "classnames"
-import PropTypes from "prop-types"
-import { buttonLinkPropTypes } from "utils/types"
-import Loader from "./loader"
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import { buttonLinkPropTypes } from "utils/types";
+import Loader from "./loader";
 
 const Button = ({
   button,
@@ -27,17 +27,15 @@ const Button = ({
           },
           // Specific to when the button is fully dark
           {
-            "bg-primary-600 text-white border-primary-600":
-              appearance === "dark",
+            "bg-primary text-white border-primary": appearance === "dark",
           },
           // Specific to when the button is dark outlines
           {
-            "text-primary-600 border-primary-600":
-              appearance === "dark-outline",
+            "text-primary border-primary": appearance === "dark-outline",
           },
           // Specific to when the button is fully white
           {
-            "bg-white text-primary-600 border-white": appearance === "white",
+            "bg-white text-primary border-white": appearance === "white",
           },
           // Specific to when the button is white outlines
           {
@@ -49,8 +47,8 @@ const Button = ({
         {button.text}
       </div>
     </button>
-  )
-}
+  );
+};
 
 Button.propTypes = {
   button: buttonLinkPropTypes,
@@ -61,6 +59,6 @@ Button.propTypes = {
     "dark-outline",
   ]),
   compact: PropTypes.bool,
-}
+};
 
-export default Button
+export default Button;

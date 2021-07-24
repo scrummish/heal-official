@@ -1,6 +1,6 @@
-import Markdown from "react-markdown"
-import classNames from "classnames"
-import { MdClose } from "react-icons/md"
+import Markdown from "react-markdown";
+import classNames from "classnames";
+import { MdClose } from "react-icons/md";
 
 const NotificationBanner = ({ data: { text, type }, closeSelf }) => {
   return (
@@ -10,9 +10,9 @@ const NotificationBanner = ({ data: { text, type }, closeSelf }) => {
         "text-white px-2 py-2",
         {
           // Apply theme based on notification type
-          "bg-blue-600": type === "info",
-          "bg-orange-600": type === "warning",
-          "bg-red-600": type === "alert",
+          "bg-purple": type === "info",
+          "bg-red": type === "warning",
+          "bg-coral": type === "alert",
         }
       )}
     >
@@ -25,7 +25,7 @@ const NotificationBanner = ({ data: { text, type }, closeSelf }) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NotificationBanner
+export default NotificationBanner;
