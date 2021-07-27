@@ -15,6 +15,7 @@ import ButtonLink from "./button-link";
 import NextImage from "./image";
 import CustomLink from "./custom-link";
 import LocaleSwitch from "../locale-switch";
+import AppBar from "@material-ui/core/AppBar";
 
 const Navbar = ({ navbar, pageContext }) => {
   const router = useRouter();
@@ -23,8 +24,16 @@ const Navbar = ({ navbar, pageContext }) => {
   return (
     <>
       {/* The actual navbar */}
-      <nav className="border-gray-200 border-b-2 py-6 sm:py-2">
-        <div className="container flex flex-row items-center justify-between">
+      {/* <nav className="border-gray-200 border-b-2 py-6 sm:py-2">
+       */}
+      <AppBar
+        position="sticky"
+        style={{ background: "#fff", height: "75px", color: "#373a3c" }}
+      >
+        <div
+          className="container flex flex-row items-center justify-between"
+          style={{ height: "100%" }}
+        >
           {/* Content aligned to the left */}
           <div className="flex flex-row items-center">
             <Link href="/">
@@ -77,7 +86,8 @@ const Navbar = ({ navbar, pageContext }) => {
             )}
           </div>
         </div>
-      </nav>
+      </AppBar>
+      {/* </nav> */}
 
       {/* Mobile navigation menu panel */}
       {mobileMenuIsShown && (
