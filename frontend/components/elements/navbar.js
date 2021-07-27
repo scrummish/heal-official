@@ -16,6 +16,11 @@ import NextImage from "./image";
 import CustomLink from "./custom-link";
 import LocaleSwitch from "../locale-switch";
 import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const Navbar = ({ navbar, pageContext }) => {
   const router = useRouter();
@@ -23,30 +28,34 @@ const Navbar = ({ navbar, pageContext }) => {
 
   return (
     <>
-      {/* The actual navbar */}
-      {/* <nav className="border-gray-200 border-b-2 py-6 sm:py-2">
-       */}
       <AppBar
         position="sticky"
-        style={{ background: "#fff", height: "75px", color: "#373a3c" }}
+        style={{
+          background: "#fff",
+          height: "100px",
+          color: "#373a3c",
+        }}
       >
-        <div
+        <Toolbar
           className="container flex flex-row items-center justify-between"
           style={{ height: "100%" }}
         >
           {/* Content aligned to the left */}
           <div className="flex flex-row items-center">
             <Link href="/">
-              <a className="h-8 w-32">
-                <NextImage width="120" height="33" media={navbar.logo} />
+              <a className="h-8 w-32" style={{ height: "90%" }}>
+                <NextImage media={navbar.logo} />
               </a>
             </Link>
             {/* List of links on desktop */}
-            <ul className="hidden list-none md:flex flex-row gap-4 items-baseline ml-10">
+            <ul className="hidden list-none md:flex flex-row gap-4 items-baseline ml-10 mr-10">
               {navbar.links.map((navLink) => (
                 <li key={navLink.id}>
                   <CustomLink link={navLink} locale={router.locale}>
-                    <div className="hover:text-magenta text-purple px-2 py-1">
+                    <div
+                      style={{ fontSize: "17px" }}
+                      className="hover:text-magenta text-purple px-2 py-1"
+                    >
                       {navLink.text}
                     </div>
                   </CustomLink>
@@ -85,16 +94,41 @@ const Navbar = ({ navbar, pageContext }) => {
               </div>
             )}
           </div>
-        </div>
+        </Toolbar>
       </AppBar>
-      {/* </nav> */}
 
       {/* Mobile navigation menu panel */}
       {mobileMenuIsShown && (
-        <MobileNavMenu
-          navbar={navbar}
-          closeSelf={() => setMobileMenuIsShown(false)}
-        />
+        <>
+          <Drawer
+            anchor={"left"}
+            open={mobileMenuIsShown}
+            onClose={() => setMobileMenuIsShown(false)}
+          >
+            <List style={{ width: "230px" }}>
+              <Link href="/">
+                <a>
+                  <img
+                    src={`http://localhost:1337${navbar.logo.url}`}
+                    style={{ margin: "7px", width: "90px" }}
+                  />
+                </a>
+              </Link>
+              {navbar.links.map((navLink) => (
+                <li key={navLink.id}>
+                  <CustomLink link={navLink} locale={router.locale}>
+                    <div
+                      style={{ fontSize: "17px" }}
+                      className="hover:text-magenta text-purple px-2 py-1"
+                    >
+                      {navLink.text}
+                    </div>
+                  </CustomLink>
+                </li>
+              ))}
+            </List>
+          </Drawer>
+        </>
       )}
     </>
   );
