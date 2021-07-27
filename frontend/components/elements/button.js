@@ -1,9 +1,23 @@
+import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { buttonLinkPropTypes } from "utils/types";
 import Loader from "./loader";
+import Button from "@material-ui/core/Button";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
-const Button = ({
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#c0b3c5",
+      main: "#982568",
+      dark: "#532565",
+      contrastText: "#fff",
+    },
+  },
+});
+
+const Btn = ({
   button,
   appearance,
   compact = false,
@@ -12,8 +26,15 @@ const Button = ({
   type,
 }) => {
   return (
-    <button link={button} onClick={handleClick} type={type}>
-      <div
+    <ThemeProvider theme={theme}>
+      <Button
+        link={button}
+        onClick={handleClick}
+        type={type}
+        variant="contained"
+        color="primary"
+      >
+        {/* <div
         className={classNames(
           // Common classes
           "flex w-full justify-center lg:w-auto text-center uppercase tracking-wide font-semibold text-base md:text-sm border-2 rounded-md",
@@ -42,15 +63,16 @@ const Button = ({
             "text-white border-white": appearance === "white-outline",
           }
         )}
-      >
+      > */}
         {loading && <Loader />}
         {button.text}
-      </div>
-    </button>
+        {/* </div> */}
+      </Button>
+    </ThemeProvider>
   );
 };
 
-Button.propTypes = {
+Btn.propTypes = {
   button: buttonLinkPropTypes,
   appearance: PropTypes.oneOf([
     "dark",
@@ -61,4 +83,4 @@ Button.propTypes = {
   compact: PropTypes.bool,
 };
 
-export default Button;
+export default Btn;
