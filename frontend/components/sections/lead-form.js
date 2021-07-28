@@ -7,7 +7,6 @@ import React from "react";
 
 const LeadForm = ({ data }) => {
   const [loading, setLoading] = useState(false);
-  console.log(data);
 
   const LeadSchema = yup.object().shape({
     email: yup.string().email().required(),
