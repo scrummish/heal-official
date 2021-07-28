@@ -1,6 +1,19 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { linkPropTypes } from "utils/types";
+import Button from "@material-ui/core/Button";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#c0b3c5",
+      main: "#982568",
+      dark: "#532565",
+      contrastText: "#fff",
+    },
+  },
+});
 
 const CustomLink = ({ link, children }) => {
   const isInternalLink = link.url.startsWith("/");
@@ -17,9 +30,17 @@ const CustomLink = ({ link, children }) => {
   // Plain <a> tags for external links
   if (link.newTab) {
     return (
-      <a href={link.url} target="_blank" rel="noopener noreferrer">
-        {children}
-      </a>
+      <ThemeProvider theme={theme}>
+        <Button
+          variant="contained"
+          color="primary"
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {children}
+        </Button>
+      </ThemeProvider>
     );
   }
 

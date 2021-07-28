@@ -21,6 +21,7 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
 
 const Navbar = ({ navbar, pageContext }) => {
   const router = useRouter();
@@ -111,21 +112,34 @@ const Navbar = ({ navbar, pageContext }) => {
                   <img
                     src={`http://localhost:1337${navbar.logo.url}`}
                     style={{ margin: "7px", width: "90px" }}
+                    alt={`http://localhost:1337${
+                      navbar.logo.alternativeText || ""
+                    }`}
                   />
                 </a>
               </Link>
               {navbar.links.map((navLink) => (
                 <li key={navLink.id}>
                   <CustomLink link={navLink} locale={router.locale}>
-                    <div
-                      style={{ fontSize: "17px" }}
-                      className="hover:text-magenta text-purple px-2 py-1"
-                    >
-                      {navLink.text}
-                    </div>
+                    <ListItem className="hover:text-magenta text-purple px-2 py-1">
+                      <ListItemText>{navLink.text}</ListItemText>
+                    </ListItem>
                   </CustomLink>
                 </li>
               ))}
+              <Divider />
+              {navbar.button && (
+                <div style={{ marginTop: "15px" }}>
+                  <ButtonLink
+                    button={navbar.button}
+                    appearance={getButtonAppearance(
+                      navbar.button.type,
+                      "light"
+                    )}
+                    compact
+                  />
+                </div>
+              )}
             </List>
           </Drawer>
         </>

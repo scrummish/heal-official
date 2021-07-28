@@ -2,42 +2,21 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import { buttonLinkPropTypes } from "utils/types";
 import CustomLink from "./custom-link";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#c0b3c5",
+      main: "#982568",
+      dark: "#532565",
+      contrastText: "#fff",
+    },
+  },
+});
 
 const ButtonContent = ({ button, appearance, compact }) => {
-  return (
-    <div
-      className={classNames(
-        // Common classes
-        "block w-full lg:w-auto text-center uppercase tracking-wide font-semibold text-base md:text-sm border-2 rounded-md",
-        // Full-size button
-        {
-          "px-8 py-4": compact === false,
-        },
-        // Compact button
-        {
-          "px-6 py-2": compact === true,
-        },
-        // Specific to when the button is fully dark
-        {
-          "bg-primary text-white border-primary": appearance === "dark",
-        },
-        // Specific to when the button is dark outlines
-        {
-          "text-primary border-primary": appearance === "dark-outline",
-        },
-        // Specific to when the button is fully white
-        {
-          "bg-white text-primary border-white": appearance === "white",
-        },
-        // Specific to when the button is white outlines
-        {
-          "text-white border-white": appearance === "white-outline",
-        }
-      )}
-    >
-      {button.text}
-    </div>
-  );
+  return <div>{button.text}</div>;
 };
 
 const ButtonLink = ({ button, appearance, compact = false }) => {
