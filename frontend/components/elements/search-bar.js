@@ -50,7 +50,7 @@ const styles = (theme) => ({
 
 function SearchBar(props) {
   const { classes, filter, setFilter } = props;
-  const lowercasedFilter = filter.toLowerCase();
+  //   const lowercasedFilter = filter.toLowerCase();
 
   return (
     <>

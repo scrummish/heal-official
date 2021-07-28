@@ -22,7 +22,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
-import SearchBar from "./search-bar";
 
 const Navbar = ({ navbar, pageContext }) => {
   const router = useRouter();
@@ -38,7 +37,6 @@ const Navbar = ({ navbar, pageContext }) => {
           color: "#373a3c",
         }}
       >
-        <SearchBar></SearchBar>
         <Toolbar
           className="container flex flex-row items-center justify-between"
           style={{ height: "100%" }}
