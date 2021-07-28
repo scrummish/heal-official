@@ -49,7 +49,7 @@ const Navbar = ({ navbar, pageContext }) => {
               </a>
             </Link>
             {/* List of links on desktop */}
-            <ul className="hidden list-none md:flex flex-row gap-4 items-baseline ml-10 mr-10">
+            <ul className="hidden list-none lg:flex flex-row gap-4 items-baseline ml-10 mr-10">
               {navbar.links.map((navLink) => (
                 <li key={navLink.id}>
                   <CustomLink link={navLink} locale={router.locale}>
@@ -65,22 +65,9 @@ const Navbar = ({ navbar, pageContext }) => {
             </ul>
           </div>
           <div className="flex">
-            {/* Locale Switch Mobile */}
-            {pageContext.localizedPaths && (
-              <div className="md:hidden">
-                <LocaleSwitch pageContext={pageContext} />
-              </div>
-            )}
-            {/* Hamburger menu on mobile */}
-            <button
-              onClick={() => setMobileMenuIsShown(true)}
-              className="p-1 block md:hidden"
-            >
-              <MdMenu className="h-8 w-auto" />
-            </button>
             {/* CTA button on desktop */}
             {navbar.button && (
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <ButtonLink
                   button={navbar.button}
                   appearance={getButtonAppearance(navbar.button.type, "light")}
@@ -88,12 +75,19 @@ const Navbar = ({ navbar, pageContext }) => {
                 />
               </div>
             )}
-            {/* Locale Switch Desktop */}
+            {/* Locale Switch Mobile */}
             {pageContext.localizedPaths && (
-              <div className="hidden md:block">
+              <div>
                 <LocaleSwitch pageContext={pageContext} />
               </div>
             )}
+            {/* Hamburger menu on mobile */}
+            <button
+              onClick={() => setMobileMenuIsShown(true)}
+              className="p-1 block lg:hidden"
+            >
+              <MdMenu className="h-8 w-auto" />
+            </button>
           </div>
         </Toolbar>
       </AppBar>
