@@ -128,7 +128,7 @@ const Navbar = ({ navbar, pageContext }) => {
                 </li>
               ))}
               <Divider />
-              {navbar.button && (
+              {/* {navbar.button && (
                 <div style={{ marginTop: "15px" }}>
                   <ButtonLink
                     button={navbar.button}
@@ -139,7 +139,7 @@ const Navbar = ({ navbar, pageContext }) => {
                     compact
                   />
                 </div>
-              )}
+              )} */}
             </List>
           </Drawer>
         </>

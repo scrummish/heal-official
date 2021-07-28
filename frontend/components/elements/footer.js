@@ -9,7 +9,11 @@ const Footer = ({ footer }) => {
       <div className="container flex flex-col lg:flex-row lg:justify-between">
         <div>
           {footer.logo && (
-            <NextImage width="120" height="33" media={footer.logo} />
+            <img
+              src={`http://localhost:1337${footer.logo.url}`}
+              style={{ margin: "7px", width: "90px" }}
+              alt={`http://localhost:1337${footer.logo.alternativeText || ""}`}
+            />
           )}
         </div>
         <nav className="flex flex-wrap flex-row lg:gap-20 items-start lg:justify-end mb-10">
