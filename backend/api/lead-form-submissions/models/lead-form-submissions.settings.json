@@ -24,6 +24,9 @@
     },
     "location": {
       "type": "string"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }
