@@ -23,6 +23,9 @@
     },
     "name": {
       "type": "string"
+    },
+    "inquiry": {
+      "type": "text"
     }
   }
 }

@@ -3,16 +3,16 @@ import { fetchAPI } from "utils/api";
 import * as yup from "yup";
 import { Formik, Form, Field } from "formik";
 import Button from "../elements/button";
+import React from "react";
 
 const LeadForm = ({ data }) => {
-  console.log("data");
-  console.log(data);
-  console.log("data");
   const [loading, setLoading] = useState(false);
+  console.log(data);
 
   const LeadSchema = yup.object().shape({
     email: yup.string().email().required(),
     name: yup.string().required(),
+    inquiry: yup.string().required(),
   });
 
   return (
@@ -20,7 +20,7 @@ const LeadForm = ({ data }) => {
       <h1 className="text-3xl mb-10 font-bold mb-2">{data.title}</h1>
       <div className="flex flex-col items-center">
         <Formik
-          initialValues={{ email: "", name: "" }}
+          initialValues={{ email: "", name: "", inquiry: "" }}
           validationSchema={LeadSchema}
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             setLoading(true);
@@ -32,6 +32,7 @@ const LeadForm = ({ data }) => {
                 body: JSON.stringify({
                   email: values.email,
                   name: values.name,
+                  inquiry: values.inquiry,
                   location: data.location,
                 }),
               });
@@ -45,18 +46,26 @@ const LeadForm = ({ data }) => {
         >
           {({ errors, touched, isSubmitting }) => (
             <div>
-              <Form className="flex flex-col md:flex-row gap-4">
+              <Form className="flex flex-wrap flex-col md:flex-row gap-4">
                 <Field
                   className="text-base focus:outline-none py-4 md:py-0 px-4 border-2 rounded-md"
                   type="name"
                   name="name"
                   placeholder={data.name}
                 />
+
                 <Field
-                  className="text-base focus:outline-none py-4 md:py-0 px-4 border-2 rounded-md"
+                  className="text-base h-14 focus:outline-none py-4 md:py-0 px-4 border-2 rounded-md"
                   type="email"
                   name="email"
                   placeholder={data.emailPlaceholder}
+                />
+                <Field
+                  className="text-base h-28 focus:outline-none py-4 md:py-0 px-4 border-2 w-full rounded-md"
+                  type="inquiry"
+                  name="inquiry"
+                  placeholder={data.inquiry}
+                  component="textarea"
                 />
                 <Button
                   type="submit"
